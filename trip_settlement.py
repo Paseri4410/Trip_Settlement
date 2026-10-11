@@ -5,9 +5,9 @@ st.title("旅費精算アプリ")
 TripMemberNum = st.number_input("旅行参加人数を入力")
 TripMemberName = [None] * int(TripMemberNum)
 # それぞれの立て替え金額一覧
-TripMemberAdvancePaymentSum = [0] * TripMemberNum
+TripMemberAdvancePaymentSum = [0] * int(TripMemberNum)
 # それぞれがそれぞれに支払う金額一覧
-TripMemberPayList = [[0] * TripMemberNum for _ in range(TripMemberNum)]
+TripMemberPayList = [[0] * int(TripMemberNum) for _ in range(TripMemberNum)]
 
 
 # それぞれの立て替え額計算
