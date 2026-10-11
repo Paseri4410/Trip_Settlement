@@ -7,7 +7,7 @@ TripMemberName = [None] * int(TripMemberNum)
 # それぞれの立て替え金額一覧
 TripMemberAdvancePaymentSum = [0] * int(TripMemberNum)
 # それぞれがそれぞれに支払う金額一覧
-TripMemberPayList = [[0] * int(TripMemberNum) for _ in range(TripMemberNum)]
+TripMemberPayList = [[0] * int(TripMemberNum) for _ in range(int(TripMemberNum))]
 
 
 # それぞれの立て替え額計算
