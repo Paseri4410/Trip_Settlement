@@ -3,7 +3,7 @@ import streamlit as st
 st.title("旅費精算アプリ")
 
 TripMemberNum = st.number_input("旅行参加人数を入力")
-TripMemberName = [None] * TripMemberNum
+TripMemberName = [None] * int(TripMemberNum)
 # それぞれの立て替え金額一覧
 TripMemberAdvancePaymentSum = [0] * TripMemberNum
 # それぞれがそれぞれに支払う金額一覧
