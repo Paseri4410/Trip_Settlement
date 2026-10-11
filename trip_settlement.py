@@ -11,7 +11,7 @@ TripMemberPayList = [[0] * int(TripMemberNum) for _ in range(int(TripMemberNum))
 
 
 # それぞれの立て替え額計算
-for TripMember in TripMemberNum:
+for TripMember in int(TripMemberNum):
     TripMemberName = st.text_input("旅行参加者の名前を入力")
     while True:
         TripMemberAdvancePayment = st.number_input(f"{TripMemberName[TripMember]}が立て替えた金額を入力")
@@ -20,14 +20,14 @@ for TripMember in TripMemberNum:
             break
     st.write(f"{TripMemberName[TripMember]}が立て替えた合計金額：{TripMemberAdvancePaymentSum[TripMember]} 円") 
 
-for TripMemberPay in TripMemberNum:
-    for TripMemberGet in TripMemberNum:
+for TripMemberPay in int(TripMemberNum):
+    for TripMemberGet in int(TripMemberNum):
         TripMemberPayList[TripMemberPay][TripMemberGet] = TripMemberAdvancePaymentSum[TripMemberGet] / TripMemberNum
         if TripMemberPay == TripMemberGet:
                     TripMemberPayList[TripMemberPay][TripMemberGet] = 0
 
-for TripMember_1 in TripMemberNum:
-    for TripMember_2 in TripMemberNum:
+for TripMember_1 in int(TripMemberNum):
+    for TripMember_2 in int(TripMemberNum):
           TripMemberPayList[TripMember_1][TripMember_2] -= TripMemberPayList[TripMember_2][TripMember_1]
     st.dataframe(TripMemberPayList)
 
