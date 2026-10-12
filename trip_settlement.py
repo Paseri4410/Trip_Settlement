@@ -17,7 +17,7 @@ TripMemberPayList = [[0] * TripMemberNum for _ in range(TripMemberNum)]
 
 # それぞれの立て替え額計算
 for TripMember in range(TripMemberNum):
-    TripMemberName = str(st.text_input("旅行参加者の名前を入力"))
+    TripMemberName[TripMember] = st.text_input("旅行参加者の名前を入力")
     while True:
         TripMemberAdvancePayment = int(st.number_input(
                 f"{TripMemberName[TripMember]}が立て替えた金額を入力",
@@ -26,7 +26,7 @@ for TripMember in range(TripMemberNum):
             )
         )
         TripMemberAdvancePaymentSum[TripMember] += TripMemberAdvancePayment
-        if st.button("合計を計算"):
+        if st.button("合計"):
             break
     st.write(f"{TripMemberName[TripMember]}が立て替えた合計金額：{TripMemberAdvancePaymentSum[TripMember]} 円") 
 
