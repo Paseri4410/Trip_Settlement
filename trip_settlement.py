@@ -21,7 +21,8 @@ for TripMember in range(TripMemberNum):
     st.write(f"{TripMember}")
     while True:
         TripMemberAdvancePayment = int(st.number_input(
-                f"{TripMemberName[TripMember]}が立て替えた金額を入力",
+                # f"{TripMemberName[TripMember]}が立て替えた金額を入力",
+                "が立て替えた金額を入力"
                 min_value = 0,
                 step = 1
             )
