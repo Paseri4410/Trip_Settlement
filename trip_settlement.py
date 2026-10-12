@@ -22,7 +22,7 @@ for TripMember in range(TripMemberNum):
         TripMemberAdvancePayment = int(st.number_input(
                 f"{TripMemberName[TripMember]}が立て替えた金額を入力",
                 min_value = 0,
-                step = 0
+                step = 1
             )
         )
         TripMemberAdvancePaymentSum[TripMember] += TripMemberAdvancePayment
