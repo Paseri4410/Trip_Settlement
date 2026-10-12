@@ -9,31 +9,36 @@ TripMemberNum = int(st.number_input(
     )
 )
 TripMemberName = [None] * TripMemberNum
-ReceiptNum = 0
 
+# それぞれの立て替え回数
+AdvancePayNum = [0] * TripMemberNum
 # それぞれの立て替え金額一覧
 TripMemberAdvancePaymentSum = [0] * TripMemberNum
+
 # それぞれがそれぞれに支払う金額一覧
 TripMemberPayList = [[0] * TripMemberNum for _ in range(TripMemberNum)]
-
 
 # それぞれの立て替え額計算
 for TripMember in range(TripMemberNum):
     TripMemberName[TripMember] = st.text_input("旅行参加者の名前を入力")
-    while True:
-        ReceiptNum += 1
+    AdvancePayNum[TripMember] = st.number_input("立て替え回数を入力",
+                                                    min_value = 0,
+                                                    step = 1,
+                                                    key = f"{TripMemberName[TripMember]}が立て替えた回数"
+                                                )
+    for AdvancePay in AdvancePayNum:
         TripMemberAdvancePayment = int(st.number_input(
                 f"{TripMemberName[TripMember]}が立て替えた金額を入力",
                 min_value = 0,
                 step = 1,
-                key = f"{TripMemberName[TripMember]}が立て替えた金額({ReceiptNum})"
+                key = f"{TripMemberName[TripMember]}が立て替えた金額({AdvancePay})"
             )
         )
         TripMemberAdvancePaymentSum[TripMember] += TripMemberAdvancePayment
-        if st.button("合計", key = f"{TripMemberName[TripMember]}が立て替えた回数：{ReceiptNum}回"):
-            break
-    st.write(f"{TripMemberName[TripMember]}が立て替えた合計金額：{TripMemberAdvancePaymentSum[TripMember]} 円") 
-    ReceiptNum = 0
+    if st.button("合計", key = f"{TripMemberName[TripMember]}の立て替え回数：{AdvancePay}"):
+        st.write(f"{TripMemberName[TripMember]}が立て替えた合計金額：{TripMemberAdvancePaymentSum[TripMember]} 円")
+        TripMember = 0
+
 
 for TripMemberPay in range(TripMemberNum):
     for TripMemberGet in range(TripMemberNum):
