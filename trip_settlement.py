@@ -9,6 +9,8 @@ TripMemberNum = int(st.number_input(
     )
 )
 TripMemberName = [None] * TripMemberNum
+ReceiptNum = 0
+
 # それぞれの立て替え金額一覧
 TripMemberAdvancePaymentSum = [0] * TripMemberNum
 # それぞれがそれぞれに支払う金額一覧
@@ -20,17 +22,19 @@ for TripMember in range(TripMemberNum):
     TripMemberName[TripMember] = st.text_input("旅行参加者の名前を入力")
     st.write(f"{TripMember}")
     while True:
+        ReceiptNum += 1
         TripMemberAdvancePayment = int(st.number_input(
-                # f"{TripMemberName[TripMember]}が立て替えた金額を入力",
-                "が立て替えた金額を入力",
+                f"{TripMemberName[TripMember]}が立て替えた金額を入力",
                 min_value = 0,
-                step = 1
+                step = 1,
+                key = f"{TripMemberName[TripMember]}({ReceiptNum})"
             )
         )
         TripMemberAdvancePaymentSum[TripMember] += TripMemberAdvancePayment
         if st.button("合計"):
             break
     st.write(f"{TripMemberName[TripMember]}が立て替えた合計金額：{TripMemberAdvancePaymentSum[TripMember]} 円") 
+    ReceiptNum = 0
 
 for TripMemberPay in range(TripMemberNum):
     for TripMemberGet in range(TripMemberNum):
