@@ -31,7 +31,7 @@ for TripMember in range(TripMemberNum):
             )
         )
         TripMemberAdvancePaymentSum[TripMember] += TripMemberAdvancePayment
-        if st.button("合計"):
+        if st.button("合計", key = f"{TripMemberName[TripMember]}({ReceiptNum})"):
             break
     st.write(f"{TripMemberName[TripMember]}が立て替えた合計金額：{TripMemberAdvancePaymentSum[TripMember]} 円") 
     ReceiptNum = 0
